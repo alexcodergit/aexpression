@@ -340,7 +340,7 @@ public:
 				return value;
 		}
 		else {
-			std::cout << "'" << expression << "'" << " is not valid expresion.";
+			std::cout << "'" << expression << "'" << " is not valid expression.";
 		}
 		return std::numeric_limits<int>::min();
 	}
