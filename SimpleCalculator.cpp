@@ -5,6 +5,7 @@
 #include<stack>
 #include <ctype.h>
 #include <assert.h>
+#include <limits>
 
 /*
 * represents an information unit in arithmetic expression
@@ -265,7 +266,7 @@ private:
 			else if (t.getValue() == AEUtils::div) {
 				int i = getUnitTerm(ts);
 				if (i == 0)
-					throw std::exception("division by zero!");
+					throw std::runtime_error("division by zero!");
 				else {
 					val = val / i;
 					t = ts.nextToken();
@@ -295,11 +296,11 @@ private:
 			int val = evaluate(ts);
 			t = ts.nextToken();
 			if (t != AEUtils::closedBr)
-				throw std::exception("closed brace expected.");
+				throw std::runtime_error("closed brace expected.");
 			return val;
 		}
 		std::string err = "'" + expression + "' is not valid expression.";
-		throw std::exception(err.c_str());
+		throw std::runtime_error(err.c_str());
 	}
 
 public:
